@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>TUGBOAT NO. 1 | Comic Web &amp; 2D Arcade Game by Rylan Saw</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Comic Header -->
+  <header class="comic-header">
+    <div class="brand-badge">ISSUE #01 &bull; RYLAN SAW</div>
+    <h1 class="comic-title">STEAM TUGBOAT ADVENTURE</h1>
+    <p class="comic-tagline">Comic Concept Web &amp; 2D Interactive Browser Game</p>
+  </header>
+
+  <!-- Main Comic Panel Layout -->
+  <main class="comic-wrapper">
+    <!-- Playable 2D Game Frame -->
+    <section class="comic-panel game-panel" aria-label="2D Tugboat Comic Game">
+      <div class="hud-bar">
+        <div class="hud-chip">SCORE: <strong id="score-val">0</strong></div>
+        <div class="hud-chip">LIFEBUOYS: <strong id="buoy-val">0</strong></div>
+        <div class="hud-chip">HULL: <strong id="hull-val">100%</strong></div>
+      </div>
+
+      <div class="canvas-stage">
+        <canvas id="game-canvas" width="960" height="480"></canvas>
+
+        <!-- Start / Game Over Overlay -->
+        <div id="game-overlay" class="game-overlay">
+          <div class="speech-card">
+            <span class="comic-tag">2D COMIC ENGINE</span>
+            <h2 id="overlay-title">READY TO SAIL!</h2>
+            <p id="overlay-desc">
+              Steer Tugboat No. 1 across the comic waves! Collect lifebuoys and golden stars, dodge sea rocks, and blast the steam horn.
+            </p>
+            <button id="start-btn" class="comic-btn-primary">LAUNCH BOAT &#9654;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Touch & Keyboard Controls -->
+      <div class="controls-bar">
+        <div class="control-group">
+          <button id="btn-up" class="ctrl-btn" aria-label="Steer Up">&#9650; UP</button>
+          <button id="btn-down" class="ctrl-btn" aria-label="Steer Down">&#9660; DOWN</button>
+        </div>
+        <div class="control-hint">Desktop: Arrow Keys / W &amp; S + Space &bull; Mobile: Touch Buttons</div>
+        <button id="btn-horn" class="ctrl-btn ctrl-accent" aria-label="Steam Boost">STEAM BOOST!</button>
+      </div>
+    </section>
+
+    <!-- Comic Design Concept Specs Strip -->
+    <section class="concept-grid">
+      <article class="comic-panel info-panel">
+        <span class="panel-number">01</span>
+        <h3>ART DIRECTION</h3>
+        <p>
+          Bold ink outlines, cel-shaded wood &amp; steel hull, red pennant flag, puffing halftone steam clouds, and dynamic wave foam.
+        </p>
+      </article>
+
+      <article class="comic-panel info-panel">
+        <span class="panel-number">02</span>
+        <h3>2D GAME MECHANICS</h3>
+        <p>
+          Buoyancy wave bobbing, particle smoke emitter, seagull ambient AI, lifebuoy pickups, and obstacle collision physics.
+        </p>
+      </article>
+
+      <article class="comic-panel info-panel">
+        <span class="panel-number">03</span>
+        <h3>WEB &amp; UNITY READY</h3>
+        <p>
+          Built in modular HTML, CSS, and JavaScript for GitHub Pages and structured cleanly for porting into Unity 2D C#.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="comic-footer">
+    <span>Concept &amp; Code by </span>
+    <a href="https://github.com/RylanSaw" target="_blank" rel="noopener noreferrer">Rylan Saw</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
