@@ -1,113 +1,141 @@
-/* Comic Rough Concept & 2D Game Theme */
+/* Fullscreen Responsive Comic 2D Game Theme (Mobile + PC) */
 :root {
-  --bg-teal: #112A30;
   --bg-deep: #09171B;
+  --bg-teal: #112A30;
   --cream: #FFF8E7;
   --ink: #121218;
   --yellow: #FFD23F;
   --coral: #EE4266;
   --cyan: #3BCEAC;
-  --wood: #D98A3C;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
-body {
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   background-color: var(--bg-deep);
-  background-image: radial-gradient(rgba(59, 206, 172, 0.14) 1.5px, transparent 1.5px);
-  background-size: 18px 18px;
   color: var(--cream);
   font-family: "Plus Jakarta Sans", sans-serif;
-  min-height: 100vh;
+  user-select: none;
+  touch-action: none;
+}
+
+/* Full Viewport App Shell */
+.app-shell {
+  width: 100vw;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
+  padding: env(safe-area-inset-top, 6px) env(safe-area-inset-right, 8px) env(safe-area-inset-bottom, 6px) env(safe-area-inset-left, 8px);
+  gap: 6px;
 }
 
-/* Header */
-.comic-header {
-  text-align: center;
-  padding: 1.5rem 1rem 1rem;
+/* Top HUD Bar */
+.top-bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--bg-teal);
+  border: 3px solid var(--ink);
+  box-shadow: 0 4px 0 var(--ink);
+  border-radius: 10px;
+  padding: 6px 12px;
+  z-index: 10;
 }
 
-.brand-badge {
-  display: inline-block;
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.issue-pill {
   background: var(--yellow);
   color: var(--ink);
   font-weight: 800;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  padding: 0.25rem 0.85rem;
-  border: 3px solid var(--ink);
-  box-shadow: 4px 4px 0 var(--ink);
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  border: 2px solid var(--ink);
+  border-radius: 5px;
   transform: rotate(-2deg);
-  margin-bottom: 0.5rem;
 }
 
-.comic-title {
+.game-title {
   font-family: "Bangers", cursive;
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
-  letter-spacing: 0.05em;
+  font-size: clamp(1.25rem, 2.8vw, 1.85rem);
+  letter-spacing: 0.04em;
   color: var(--cream);
-  text-shadow: 4px 4px 0 var(--ink), -1px -1px 0 var(--ink);
+  text-shadow: 2px 2px 0 var(--ink);
+  line-height: 1;
 }
 
-.comic-tagline {
-  color: var(--cyan);
-  font-weight: 700;
-  font-size: 0.95rem;
-}
-
-/* Wrapper */
-.comic-wrapper {
-  width: 100%;
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0.75rem 1rem 2rem;
-  flex: 1;
-}
-
-.comic-panel {
-  background: var(--bg-teal);
-  border: 4px solid var(--ink);
-  box-shadow: 8px 8px 0 var(--ink);
-  border-radius: 10px;
-}
-
-.game-panel {
-  padding: 0.9rem;
-  margin-bottom: 1.5rem;
-}
-
-/* HUD */
-.hud-bar {
+.hud-stats {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.6rem;
-  margin-bottom: 0.75rem;
+  align-items: center;
+  gap: 6px;
 }
 
 .hud-chip {
   background: var(--cream);
   color: var(--ink);
-  border: 3px solid var(--ink);
-  box-shadow: 3px 3px 0 var(--ink);
-  padding: 0.3rem 0.85rem;
-  font-weight: 800;
-  font-size: 0.88rem;
+  border: 2.5px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
   border-radius: 6px;
+  padding: 3px 9px;
+  font-size: clamp(0.75rem, 1.6vw, 0.9rem);
+  font-weight: 800;
+  white-space: nowrap;
 }
 
-/* Canvas Stage */
-.canvas-stage {
-  position: relative;
-  width: 100%;
-  border: 4px solid var(--ink);
+.hud-chip strong {
+  color: var(--coral);
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  background: var(--yellow);
+  color: var(--ink);
+  border: 2.5px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
   border-radius: 8px;
+  font-weight: 900;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* Full Playable Canvas Stage */
+.stage-container {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  border: 4px solid var(--ink);
+  box-shadow: 0 6px 0 var(--ink);
+  border-radius: 12px;
   overflow: hidden;
   background: #1B3B42;
 }
@@ -115,33 +143,119 @@ body {
 #game-canvas {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 2 / 1;
+  height: 100%;
+  cursor: grab;
 }
 
-/* Overlay */
-.game-overlay {
+#game-canvas:active {
+  cursor: grabbing;
+}
+
+/* Ergonomic Touch & PC Controls Overlay */
+.touch-hud {
   position: absolute;
-  inset: 0;
-  background: rgba(9, 23, 27, 0.76);
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 8;
+}
+
+.steer-pad {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.pad-btn {
+  width: 58px;
+  height: 58px;
+  background: rgba(255, 248, 231, 0.9);
+  color: var(--ink);
+  border: 3.5px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  border-radius: 14px;
+  font-size: 1.35rem;
+  font-weight: 900;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  touch-action: manipulation;
 }
 
-.game-overlay.hidden {
-  display: none;
+.pad-btn:active {
+  background: var(--yellow);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.desktop-tip {
+  background: rgba(18, 18, 24, 0.72);
+  color: var(--cream);
+  border: 2px solid rgba(255, 248, 231, 0.25);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.boost-btn {
+  pointer-events: auto;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--coral);
+  color: #FFFFFF;
+  font-family: "Bangers", cursive;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+  border: 4px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.boost-btn:active {
+  background: var(--yellow);
+  color: var(--ink);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* Start & Game Over Overlay */
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 23, 27, 0.74);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 15;
+}
+
+.game-overlay.hidden,
+.modal-backdrop.hidden {
+  display: none !important;
 }
 
 .speech-card {
+  position: relative;
   background: var(--cream);
   color: var(--ink);
   border: 4px solid var(--ink);
   box-shadow: 8px 8px 0 var(--ink);
-  border-radius: 14px;
-  padding: 1.5rem 1.75rem;
+  border-radius: 16px;
+  padding: 1.4rem 1.6rem;
   max-width: 440px;
+  width: 100%;
   text-align: center;
 }
 
@@ -150,16 +264,16 @@ body {
   background: var(--coral);
   color: #FFFFFF;
   font-weight: 800;
-  font-size: 0.75rem;
-  padding: 0.2rem 0.65rem;
+  font-size: 0.74rem;
+  padding: 3px 10px;
   border: 2.5px solid var(--ink);
-  border-radius: 99px;
-  margin-bottom: 0.5rem;
+  border-radius: 999px;
+  margin-bottom: 0.45rem;
 }
 
 .speech-card h2 {
   font-family: "Bangers", cursive;
-  font-size: 2.2rem;
+  font-size: clamp(1.9rem, 4vw, 2.4rem);
   letter-spacing: 0.04em;
   margin-bottom: 0.45rem;
 }
@@ -174,121 +288,94 @@ body {
   background: var(--yellow);
   color: var(--ink);
   font-family: "Bangers", cursive;
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   letter-spacing: 0.05em;
-  padding: 0.55rem 1.6rem;
+  padding: 0.55rem 1.8rem;
   border: 3.5px solid var(--ink);
   box-shadow: 5px 5px 0 var(--ink);
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.15s ease;
 }
 
-.comic-btn-primary:hover {
-  transform: translate(-2px, -2px);
-}
-
-/* Controls */
-.controls-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-top: 0.85rem;
-}
-
-.control-group {
-  display: flex;
-  gap: 0.6rem;
-}
-
-.ctrl-btn {
-  background: var(--cream);
-  color: var(--ink);
-  font-weight: 800;
-  font-size: 0.85rem;
-  padding: 0.55rem 1rem;
-  border: 3px solid var(--ink);
-  box-shadow: 3px 3px 0 var(--ink);
-  border-radius: 8px;
-  cursor: pointer;
-  user-select: none;
-  touch-action: manipulation;
-}
-
-.ctrl-btn:active {
+.comic-btn-primary:active {
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
 }
 
-.ctrl-accent {
-  background: var(--coral);
-  color: #FFFFFF;
+/* Info Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 23, 27, 0.84);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
 }
 
-.control-hint {
-  font-size: 0.82rem;
-  color: var(--cream);
-  opacity: 0.85;
+.modal-card {
+  text-align: left;
 }
 
-/* Concept Grid */
-.concept-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.1rem;
-}
-
-.info-panel {
-  padding: 1.15rem;
-  position: relative;
-}
-
-.panel-number {
-  display: inline-block;
-  background: var(--yellow);
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  font-weight: 900;
   color: var(--ink);
-  font-family: "Bangers", cursive;
-  font-size: 1.15rem;
-  padding: 0.1rem 0.55rem;
-  border: 2.5px solid var(--ink);
+  cursor: pointer;
+}
+
+.info-list {
+  margin: 0.5rem 0 1rem 1.1rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.info-list li {
   margin-bottom: 0.45rem;
 }
 
-.info-panel h3 {
-  font-family: "Bangers", cursive;
-  font-size: 1.45rem;
-  letter-spacing: 0.04em;
-  color: var(--yellow);
-  margin-bottom: 0.35rem;
-}
-
-.info-panel p {
-  font-size: 0.88rem;
-  line-height: 1.5;
-  color: var(--cream);
-}
-
-/* Footer */
-.comic-footer {
+.credit-line {
+  margin-bottom: 0 !important;
+  font-weight: 800;
   text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-  font-weight: 700;
 }
 
-.comic-footer a {
-  color: var(--yellow);
+.credit-line a {
+  color: var(--coral);
   text-decoration: none;
-  border-bottom: 2px solid var(--yellow);
+  border-bottom: 2px solid var(--coral);
 }
 
-@media (max-width: 760px) {
-  .concept-grid {
-    grid-template-columns: 1fr;
-  }
-  .control-hint {
+/* Mobile Compact Adjustments */
+@media (max-width: 720px) {
+  .issue-pill,
+  .desktop-tip {
     display: none;
+  }
+
+  .top-bar {
+    padding: 5px 8px;
+  }
+
+  .hud-chip {
+    padding: 2px 7px;
+    font-size: 0.74rem;
+  }
+
+  .pad-btn {
+    width: 52px;
+    height: 52px;
+  }
+
+  .boost-btn {
+    width: 74px;
+    height: 74px;
+    font-size: 1.05rem;
   }
 }
